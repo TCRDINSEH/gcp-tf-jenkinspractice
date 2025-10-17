@@ -1,0 +1,38 @@
+# --- Terraform ---
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# --- Terraform directories ---
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+terraform.tfvars.json
+
+# --- Sensitive files ---
+*.pem
+*.key
+*.json
+*.p12
+*.backup
+
+# --- Local environment / OS files ---
+.DS_Store
+Thumbs.db
+
+# --- Logs ---
+*.log
+
+# --- IDE files ---
+.vscode/
+.idea/
+*.iml
+
+# --- Backend configuration if using GCS or S3 (optional) ---
+backend.tfvars
