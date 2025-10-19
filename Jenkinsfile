@@ -64,7 +64,7 @@ pipeline {
         
           withCredentials([file(credentialsId: "${GCP_CREDENTIALS}", variable: 'GCP_KEYFILE')]) {
             sh '''
-            //  cd gcp-tf-jenkinspractice
+            
               echo "🧩 Planning GKE deployment..."
               export GOOGLE_APPLICATION_CREDENTIALS="$GCP_KEYFILE"
               terraform plan -input=false
