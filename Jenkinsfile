@@ -38,6 +38,7 @@ pipeline {
         dir('terraform') {
           withCredentials([file(credentialsId: "${GCP_CREDENTIALS}", variable: 'GCP_KEYFILE')]) {
             sh '''
+              pwd 
               cd gcp-tf-jenkinspractice 
               echo "⚙️ Initializing Terraform..."
               export GOOGLE_APPLICATION_CREDENTIALS="$GCP_KEYFILE"
