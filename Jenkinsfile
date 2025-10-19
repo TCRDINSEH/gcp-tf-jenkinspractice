@@ -16,6 +16,7 @@ pipeline {
           git clone https://github.com/TCRDINSEH/gcp-tf-jenkinspractice.git
           cd gcp-tf-jenkinspractice
           pwd
+          chmod 777 *
           ls -la
         '''
             }
