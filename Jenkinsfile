@@ -40,7 +40,6 @@ pipeline {
           withCredentials([file(credentialsId: "${GCP_CREDENTIALS}", variable: 'GCP_KEYFILE')]) {
             sh '''
               pwd 
-              // cd gcp-tf-jenkinspractice 
               echo "⚙️ Initializing Terraform..."
               export GOOGLE_APPLICATION_CREDENTIALS="$GCP_KEYFILE"
               terraform init -input=false
@@ -53,7 +52,7 @@ pipeline {
     stage('Terraform Validate') {
       steps {
               sh '''
-            // cd gcp-tf-jenkinspractice
+            
             echo "✅ Validating Terraform configuration..."
             terraform validate
           '''
@@ -82,7 +81,7 @@ pipeline {
           withCredentials([file(credentialsId: "${GCP_CREDENTIALS}", variable: 'GCP_KEYFILE')]) {
             input message: "Approve Terraform Apply?"
             sh '''
-              // cd gcp-tf-jenkinspractice
+              
               echo "🚀 Applying Terraform changes (creating GKE)..."
               export GOOGLE_APPLICATION_CREDENTIALS="$GCP_KEYFILE"
               terraform apply -auto-approve                 
