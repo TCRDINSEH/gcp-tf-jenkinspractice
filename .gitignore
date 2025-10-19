@@ -21,6 +21,7 @@ terraform.tfvars.json
 *.json
 *.p12
 *.backup
+fundamental-run-464208-v1-c61a604d3b31.json
 
 # --- Local environment / OS files ---
 .DS_Store
