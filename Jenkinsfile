@@ -2,18 +2,18 @@ pipeline {
   agent any
 
   environment {
-    // PROJECT_ID = "my-gcp-project"
+    PROJECT_ID = "fundamental-run-464208-v1"
     // REGION = "us-central1"
     // CLUSTER_NAME = "jenkins-gke"
     GCP_CREDENTIALS = "gcp-service-account"  // Jenkins Secret File credential
   }
 
   stages {
-    stage('Checkout Code') {
-      steps {
-        checkout scm
-      }
-    }
+       stage('Checkout Code') {
+            steps {
+                git 'https://your-repo-url.git' // or use checkout scm
+            }
+        }
 
     stage('Authenticate to GCP') {
       steps {
