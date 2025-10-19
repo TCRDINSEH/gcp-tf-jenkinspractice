@@ -11,8 +11,13 @@ pipeline {
   stages {
        stage('Checkout Code') {
             steps {
-               sh 'git clone https://github.com/TCRDINSEH/gcp-tf-jenkinspractice.git' // or use checkout scm
-               sh 'pwd'
+             sh '''
+          rm -rf gcp-tf-jenkinspractice
+          git clone https://github.com/TCRDINSEH/gcp-tf-jenkinspractice.git
+          cd gcp-tf-jenkinspractice
+          pwd
+          ls -la
+        '''
             }
         }
 
