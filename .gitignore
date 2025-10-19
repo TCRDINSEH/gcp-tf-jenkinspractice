@@ -18,7 +18,7 @@ terraform.tfvars.json
 # --- Sensitive files ---
 *.pem
 *.key
-
+*.json
 *.p12
 *.backup
 
