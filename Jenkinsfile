@@ -11,7 +11,7 @@ pipeline {
   stages {
        stage('Checkout Code') {
             steps {
-                git 'https://github.com/TCRDINSEH/gcp-tf-jenkinspractice.git' // or use checkout scm
+               sh 'git clone https://github.com/TCRDINSEH/gcp-tf-jenkinspractice.git' // or use checkout scm
             }
         }
 
