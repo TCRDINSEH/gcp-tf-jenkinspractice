@@ -11,7 +11,7 @@ resource "google_compute_network" "custom_vpc" {
 # -----------------------------
 resource "google_compute_subnetwork" "custom_subnet" {
   name          = "mywindows-subnet"
-  region        = "us-central1-a"
+  region        = "us-central1"
   network       = google_compute_network.custom_vpc.id
   ip_cidr_range = "10.0.0.0/24"
 }
