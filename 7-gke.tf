@@ -1,7 +1,7 @@
 resource "google_container_cluster" "gke" {
   name                     = var.gke_name
   location                 = var.gke_location
-  remove_default_node_pool = var.gke_remove_default_node_pool
+  remove_default_node_pool = true
   initial_node_count       = var.gke_initial_node_count
   network                  = google_compute_network.vpc.self_link
   subnetwork               = google_compute_subnetwork.private.self_link

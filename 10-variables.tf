@@ -202,10 +202,10 @@ variable "gke_initial_node_count" {
   description = "GKE Initial Node Count"
   type        = number
 }
-variable "gke_remove_default_node_pool" {
-  description = "GKE Remove Default Node Pool"
-  type        = bool
-}
+# variable "gke_remove_default_node_pool" {
+#   description = "GKE Remove Default Node Pool"
+#   type        = bool
+# }
 variable "gke_networking_mode" {
   description = "GKE Networking Mode"
   type        = string
