@@ -44,7 +44,7 @@ resource "google_compute_instance" "windows_vm" {
 
   boot_disk {
     initialize_params {
-      image = "windows-server-2019-dc-v20240912"
+      image = "windows-cloud/windows-server-2019-dc"
       size  = 50
       type  = "pd-balanced"
     }

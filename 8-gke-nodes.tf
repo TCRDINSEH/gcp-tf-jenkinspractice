@@ -3,13 +3,13 @@ resource "google_service_account" "gke" {
 }
 
 # resource "google_project_iam_member" "gke_logging" {
-#   project = var.project_id
+#   project = local.project_id
 #   role    = "roles/logging.logWriter"
 #   member  = "serviceAccount:${google_service_account.gke.email}"
 # }
 
 # resource "google_project_iam_member" "gke_metrics" {
-#   project = var.project_id
+#   project = local.project_id
 #   role    = "roles/monitoring.metricWriter"
 #   member  = "serviceAccount:${google_service_account.gke.email}"
 # }
@@ -30,7 +30,7 @@ resource "google_container_node_pool" "general" {
 
   node_config {
     preemptible  = false
-    machine_type = "n2-standard-2"
+    machine_type = "e2-medium"
 
     labels = {
       role = "general"
