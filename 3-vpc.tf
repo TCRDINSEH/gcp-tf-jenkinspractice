@@ -5,7 +5,7 @@ resource "google_compute_network" "vpc" {
   delete_default_routes_on_create = var.delete_default_routes_on_create
 
 
-  depends_on = [google_project_service.api]
+  # depends_on = [google_project_service.api]
 }
 
 # Remove this route to make the VPC fully private.
