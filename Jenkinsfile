@@ -67,8 +67,7 @@ pipeline {
             
               echo "🧩 Planning GKE deployment..."
               export GOOGLE_APPLICATION_CREDENTIALS="$GCP_KEYFILE"
-              terraform plan -input=false
-      
+              terraform plan -var-file=dev_tf.tfvars
             '''
           }
         
@@ -84,7 +83,7 @@ pipeline {
               
               echo "🚀 Applying Terraform changes (creating GKE)..."
               export GOOGLE_APPLICATION_CREDENTIALS="$GCP_KEYFILE"
-              terraform apply --auto-approve                 
+              terraform apply -var-file=dev_tf.tfvars --auto-approve                
             '''
           }
         
