@@ -5,7 +5,7 @@ pipeline {
     PROJECT_ID = "fundamental-run-464208-v1"
     // REGION = "us-central1"
     // CLUSTER_NAME = "jenkins-gke"
-    GCP_CREDENTIALS = "gcp-service-account"  // Jenkins Secret File credential
+    GCP_CREDENTIALS = "artifact-registry-credentials"  // Jenkins Secret File credential
   }
 
   stages {
