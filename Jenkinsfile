@@ -79,12 +79,12 @@ pipeline {
       steps {
         
           withCredentials([file(credentialsId: "${GCP_CREDENTIALS}", variable: 'GCP_KEYFILE')]) {
-            input message: "Approve Terraform Apply?"
+           
             sh '''
               
               echo "🚀 Applying Terraform changes (creating GKE)..."
               export GOOGLE_APPLICATION_CREDENTIALS="$GCP_KEYFILE"
-              terraform apply -auto-approve                 
+              terraform apply --auto-approve                 
             '''
           }
         
