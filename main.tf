@@ -67,17 +67,17 @@ resource "google_compute_firewall" "rdp_firewall" {
 # -----------------------------
 # Outputs
 # -----------------------------
-output "instance_name" {
-  value = google_compute_instance.windows_vm.name
-}
+# output "instance_name" {
+#   value = google_compute_instance.windows_vm.name
+# }
 
-output "instance_ip" {
-  value = google_compute_instance.windows_vm.network_interface[0].access_config[0].nat_ip
-}
+# output "instance_ip" {
+#   value = google_compute_instance.windows_vm.network_interface[0].access_config[0].nat_ip
+# }
 
-output "vpc_name" {
-  value = google_compute_network.custom_vpc.name
-}
+# output "vpc_name" {
+#   value = google_compute_network.custom_vpc.name
+# }
 
 # ####################################################
 # Google Cloud VM Instance (Windows - e2-medium)
