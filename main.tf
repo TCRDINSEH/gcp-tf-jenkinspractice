@@ -105,5 +105,4 @@ resource "google_compute_instance" "linux_vm" {
     }
   }
  
-  tags = ["linux-vm"]
 }
