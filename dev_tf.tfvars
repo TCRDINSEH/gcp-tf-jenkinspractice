@@ -20,10 +20,10 @@ stack_type               = "IPV4_ONLY"
 private_subnet_name      = "private-subnet2"
 private_ip_cidr_range    = "10.0.32.0/19"
 private_region           = "us-central1"
-secondary_ip_range_name1 = "k8s-pods"
-secondary_ip_cidr_range1 = "172.16.0.0/14"
-secondary_ip_range_name2 = "k8s-services"
-secondary_ip_cidr_range2 = "172.20.0.0/18"
+# secondary_ip_range_name1 = "k8s-pods"
+# secondary_ip_cidr_range1 = "172.16.0.0/14"
+# secondary_ip_range_name2 = "k8s-services"
+# secondary_ip_cidr_range2 = "172.20.0.0/18"
 # -------------------------------
 # GKE Variable settings
 #-------------------------------

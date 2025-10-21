@@ -84,19 +84,19 @@ variable "private_region" {
 #   description = "Secondary Range Name"
 #   type        = string
 # }
-variable "secondary_ip_cidr_range1" {
-  description = "Secondary IP CIDR Range"
-  type        = string
-}
+# variable "secondary_ip_cidr_range1" {
+#   description = "Secondary IP CIDR Range"
+#   type        = string
+# }
 
 # variable "secondary_range_name2" {
 #   description = "Secondary Range Name"
 #   type        = string
 # }
-variable "secondary_ip_cidr_range2" {
-  description = "Secondary IP CIDR Range"
-  type        = string
-}
+# variable "secondary_ip_cidr_range2" {
+#   description = "Secondary IP CIDR Range"
+#   type        = string
+# }
 # -----------------------------
 # Firewall Variable settings
 #------------------------------
