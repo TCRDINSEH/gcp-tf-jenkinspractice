@@ -1,3 +1,95 @@
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 6.0"
+    }
+  }
+
+  required_version = ">= 1.6.0"
+}
+
+
+# -----------------------------
+# Create a new VPC network
+# -----------------------------
+resource "google_compute_network" "custom_vpc" {
+  name                    = "mywindows-vpc"
+  auto_create_subnetworks = false
+}
+
+# -----------------------------
+# Create a subnet inside the VPC
+# -----------------------------
+resource "google_compute_subnetwork" "custom_subnet" {
+  name          = "mywindows-subnet"
+  region        = "us-central1-a"
+  network       = google_compute_network.custom_vpc.id
+  ip_cidr_range = "10.0.0.0/24"
+}
+
+# -----------------------------
+# Create a firewall rule for RDP (TCP 3389)
+# -----------------------------
+resource "google_compute_firewall" "rdp_firewall" {
+  name    = "allow-rdp"
+  network = google_compute_network.custom_vpc.name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["3389"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["windows"]
+}
+
+# -----------------------------
+# Create a Windows Server VM
+# -----------------------------
+resource "google_compute_instance" "windows_vm" {
+  name         = "mywindows-windows-vm"
+  machine_type = "e2-medium"
+  zone         = "us-central1-a"
+
+  tags = ["windows"]
+
+  boot_disk {
+    initialize_params {
+      image = "windows-cloud/windows-server-2019"
+      size  = 50
+      type  = "pd-balanced"
+    }
+  }
+
+  network_interface {
+    network    = google_compute_network.custom_vpc.id
+    subnetwork = google_compute_subnetwork.custom_subnet.id
+    access_config {} # Gives external IP
+  }
+
+  metadata = {
+    windows-startup-script-ps1 = <<-EOT
+      Write-Host "Windows VM Startup Script Running..."
+      New-Item -Path "C:\\startup.txt" -ItemType File -Value "VM setup completed via Jenkins & Terraform."
+    EOT
+  }
+}
+
+# -----------------------------
+# Outputs
+# -----------------------------
+output "instance_name" {
+  value = google_compute_instance.windows_vm.name
+}
+
+output "instance_ip" {
+  value = google_compute_instance.windows_vm.network_interface[0].access_config[0].nat_ip
+}
+
+output "vpc_name" {
+  value = google_compute_network.custom_vpc.name
+}
 
 # ####################################################
 # Google Cloud VM Instance (Windows - e2-medium)
@@ -58,24 +150,24 @@
 # -----------------------------
 # Create Linux VM Instance
 # -----------------------------
-resource "google_compute_instance" "linux_vm" {
-  name         = "linux-vm"
-  machine_type = "e2-medium"
-  zone         = "us-central1-a"	
+# resource "google_compute_instance" "linux_vm" {
+#   name         = "linux-vm"
+#   machine_type = "e2-medium"
+#   zone         = "us-central1-a"	
 
-  # Use default network
-  network_interface {
-    network       = "default"
-    access_config {}  # Allocates external IP
-  }
+#   # Use default network
+#   network_interface {
+#     network       = "default"
+#     access_config {}  # Allocates external IP
+#   }
 
-  # Ubuntu boot disk
-  boot_disk {
-    initialize_params {
-      image = "ubuntu-os-cloud/ubuntu-2204-lts"
-      size  = 30
-      type  = "pd-balanced"
-    }
-  }
+#   # Ubuntu boot disk
+#   boot_disk {
+#     initialize_params {
+#       image = "ubuntu-os-cloud/ubuntu-2204-lts"
+#       size  = 30
+#       type  = "pd-balanced"
+#     }
+#   }
  
-}
+# }
