@@ -52,10 +52,10 @@ variable "region" {
   description = "Region"
   type        = string
 }
-variable "network" {
-  description = "Network"
-  type        = string
-}
+# variable "network" {
+#   description = "Network"
+#   type        = string
+# }
 variable "private_ip_google_access" {
   description = "Private IP Google Access"
   type        = bool
@@ -80,19 +80,19 @@ variable "private_region" {
 # Secondary IP Range Variable settings  
 #-------------------------------
 
-variable "secondary_range_name1" {
-  description = "Secondary Range Name"
-  type        = string
-}
+# variable "secondary_range_name1" {
+#   description = "Secondary Range Name"
+#   type        = string
+# }
 variable "secondary_ip_cidr_range1" {
   description = "Secondary IP CIDR Range"
   type        = string
 }
 
-variable "secondary_range_name2" {
-  description = "Secondary Range Name"
-  type        = string
-}
+# variable "secondary_range_name2" {
+#   description = "Secondary Range Name"
+#   type        = string
+# }
 variable "secondary_ip_cidr_range2" {
   description = "Secondary IP CIDR Range"
   type        = string
@@ -109,10 +109,10 @@ variable "allowed_protocol" {
   type        = string
 }
 
-variable "allowed_ports" {
-  description = "Allowed Ports"
-  type        = list(string)
-}
+# variable "allowed_ports" {
+#   description = "Allowed Ports"
+#   type        = list(string)
+# }
 variable "source_ranges" {
   description = "Source Ranges"
   type        = list(string)
@@ -120,73 +120,73 @@ variable "source_ranges" {
 # -----------------------------
 # VM Instance Variable settings
 #------------------------------
-variable "instance_name" {
-  description = "Instance Name"
-  type        = string
-}
-variable "machine_type" {
-  description = "Machine Type"
-  type        = string
-}
-variable "zone" {
-  description = "Zone"
-  type        = string
-}
-variable "boot_disk_image" {
-  description = "Boot Disk Image"
-  type        = string
-}
-variable "boot_disk_size" {
-  description = "Boot Disk Size"
-  type        = number
-}
-variable "boot_disk_type" {
-  description = "Boot Disk Type"
-  type        = string
-}
-variable "network_interface_network" {
-  description = "Network Interface Network"
-  type        = string
-}
-variable "network_interface_subnetwork" {
-  description = "Network Interface Subnetwork"
-  type        = string
-}
-variable "network_interface_access_config" {
-  description = "Network Interface Access Config"
-  type        = bool
-}
+# variable "instance_name" {
+#   description = "Instance Name"
+#   type        = string
+# }
+# variable "machine_type" {
+#   description = "Machine Type"
+#   type        = string
+# }
+# variable "zone" {
+#   description = "Zone"
+#   type        = string
+# }
+# variable "boot_disk_image" {
+#   description = "Boot Disk Image"
+#   type        = string
+# }
+# variable "boot_disk_size" {
+#   description = "Boot Disk Size"
+#   type        = number
+# }
+# variable "boot_disk_type" {
+#   description = "Boot Disk Type"
+#   type        = string
+# }
+# variable "network_interface_network" {
+#   description = "Network Interface Network"
+#   type        = string
+# }
+# variable "network_interface_subnetwork" {
+#   description = "Network Interface Subnetwork"
+#   type        = string
+# }
+# variable "network_interface_access_config" {
+#   description = "Network Interface Access Config"
+#   type        = bool
+# }
 
 # -----------------------------
 # Tags Variable settings
 #------------------------------
-variable "instance_tags" {
-  description = "Instance Tags"
-  type        = list(string)
-}
+# variable "instance_tags" {
+#   description = "Instance Tags"
+#   type        = list(string)
+# }
 # -----------------------------
 # Metadata Variable settings    
 #------------------------------
-variable "metadata_startup_script" {
-  description = "Metadata Startup Script"
-  type        = string
-}
+# variable "metadata_startup_script" {
+#   description = "Metadata Startup Script"
+#   type        = string
+# }
 
 # -----------------------------
 # Outputs Variable settings
 #------------------------------
-variable "output_instance_name" {
-  description = "Output Instance Name"
-  type        = string
-}
-variable "output_instance_ip" {
-  description = "Output Instance IP"
-  type        = string
-}
-variable "output_vpc_name" {
-  description = "Output VPC Name"
-  type        = string
-}
+# variable "output_instance_name" {
+#   description = "Output Instance Name"
+#   type        = string
+# }
+# variable "output_instance_ip" {
+#   description = "Output Instance IP"
+#   type        = string
+# }
+# variable "output_vpc_name" {
+#   description = "Output VPC Name"
+#   type        = string
+# }
 # -----------------------------
 # gke Variable settings 
 #------------------------------

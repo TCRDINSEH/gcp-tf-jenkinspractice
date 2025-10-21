@@ -18,13 +18,13 @@ resource "google_compute_subnetwork" "private" {
 
 
   secondary_ip_range {
-    range_name    = var.secondary_range_name1
+    range_name    = "k8s-pods"
     ip_cidr_range = var.secondary_ip_cidr_range1
 
   }
 
   secondary_ip_range {
-    range_name    = var.secondary_range_name2
-    ip_cidr_range = var.secondary_ip_cidr_range2
+    range_name    = "k8s-services"
+      ip_cidr_range = var.secondary_ip_cidr_range2
   }
 }
