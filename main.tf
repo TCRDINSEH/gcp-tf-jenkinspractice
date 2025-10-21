@@ -35,34 +35,34 @@ resource "google_compute_firewall" "rdp_firewall" {
 # -----------------------------
 # Create a Windows Server VM
 # -----------------------------
-resource "google_compute_instance" "windows_vm" {
-  name         = "mywindows-windows-vm"
-  machine_type = "e2-medium"
-  zone         = "us-central1-a"
+# resource "google_compute_instance" "windows_vm" {
+#   name         = "mywindows-windows-vm"
+#   machine_type = "e2-medium"
+#   zone         = "us-central1-a"
 
-  tags = ["windows"]
+#   tags = ["windows"]
 
-  boot_disk {
-    initialize_params {
-      image = "windows-cloud/windows-server-2019-dc"
-      size  = 50
-      type  = "pd-balanced"
-    }
-  }
+#   boot_disk {
+#     initialize_params {
+#       image = "windows-cloud/windows-server-2019-dc"
+#       size  = 50
+#       type  = "pd-balanced"
+#     }
+#   }
 
-  network_interface {
-    network    = google_compute_network.custom_vpc.id
-    subnetwork = google_compute_subnetwork.custom_subnet.id
-    access_config {} # Gives external IP
-  }
+#   network_interface {
+#     network    = google_compute_network.custom_vpc.id
+#     subnetwork = google_compute_subnetwork.custom_subnet.id
+#     access_config {} # Gives external IP
+#   }
 
-  metadata = {
-    windows-startup-script-ps1 = <<-EOT
-      Write-Host "Windows VM Startup Script Running..."
-      New-Item -Path "C:\\startup.txt" -ItemType File -Value "VM setup completed via Jenkins & Terraform."
-    EOT
-  }
-}
+#   metadata = {
+#     windows-startup-script-ps1 = <<-EOT
+#       Write-Host "Windows VM Startup Script Running..."
+#       New-Item -Path "C:\\startup.txt" -ItemType File -Value "VM setup completed via Jenkins & Terraform."
+#     EOT
+#   }
+# }
 
 # -----------------------------
 # Outputs
