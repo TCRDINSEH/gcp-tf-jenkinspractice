@@ -1,11 +1,11 @@
 resource "google_container_cluster" "gke" {
-  name                     = "tf-gke-cluster"
-  location                 = "us-central1-a"
-  remove_default_node_pool = true
-  initial_node_count       = 1
+  name                     = var.gke_name
+  location                 = var.gke_location
+  remove_default_node_pool = var.gke_remove_default_node_pool
+  initial_node_count       = var.gke_initial_node_count
   network                  = google_compute_network.vpc.self_link
   subnetwork               = google_compute_subnetwork.private.self_link
-  networking_mode          = "VPC_NATIVE"
+  networking_mode          = var.gke_networking_mode
 
   deletion_protection = false
 
@@ -26,7 +26,7 @@ resource "google_container_cluster" "gke" {
   }
 
   workload_identity_config {
-    workload_pool = "${local.project_id}.svc.id.goog"
+    workload_pool = "${var.project_id}.svc.id.goog"
   }
 
   ip_allocation_policy {
@@ -37,7 +37,7 @@ resource "google_container_cluster" "gke" {
   private_cluster_config {
     enable_private_nodes    = true
     enable_private_endpoint = false
-    master_ipv4_cidr_block  = "192.168.0.0/28"
+    master_ipv4_cidr_block  = var.gke_private_cluster_master_ipv4_cidr_block
   }
 
   # Jenkins use case
